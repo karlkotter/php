@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        h1{
+            padding: 20px;
+        }
+
+    </style>
+</head>
+
+    <body>
+    <div class="container">
+        <h1>Harjutus 4</h1>
+        <h1>Jagamine</h1>
+        <form action="h04.php" method="get">
+        <input type="number" name="a" placeholder="Esimene arv" required><br>
+        <input type="number" name="b" placeholder="Teine Arv" required><br>
+        <input type="submit" value="Arvuta" class="btn btn-success"><br>
+        </form>
+
+        <h1>Vanus</h1>
+        <input type="number" name="vanus" placeholder="Vanus" required><br>
+        <input type="number" name="vanus1" placeholder="Teine Vanus" required><br>
+        <input type="submit" value="Arvuta" class="btn btn-success"><br>
+        </form>
+        
+        <?php
+
+        #Jagamine – sisestatakse 2 täisarvulist muutujat. Jaga üks arv teisega. Väljasta ka hoiatav lause, kui kasutaja üritab jagada nulliga. Lisa kontroll, mis ei käivita koodi tühjade lahtrite puhul (N: if(!empty($_GET[‘name’])){lause}, see käivitab koodi siis, kui lahtrisse on midagi lisatud)
+        if (isset($_GET["a"])&& isset($_GET["b"])) {
+        $a = $_GET['a'];
+        $b = $_GET['b'];
+        
+        if($b != 0){ 
+            $jagamine = ($a / $b);
+            echo $jagamine ." on teie summa";
+            } else {
+                echo "nulliga ei saa jagada.";
+            }
+            }
+
+        #Vanus (if…elseif) – sisestatakse kasutaja vanused. Leia, kumb on vanem või on ühevanused. Kood ei käivtu, kui kumbki lahter on jäänud tühjaks
+        $vanus = $_GET['vanus'];
+        $vanus1 = $_GET['vanus1'];
+        if($vanus > $vanus1){
+            echo "esimene vanus on vanem";
+        } else {
+            echo "teine vanus on vanem";
+        }
+
+
+        ?>
+
+    </div>
+</body>
+</html>
