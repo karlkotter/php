@@ -18,9 +18,7 @@
 
 
 <body>
-
    <?php
-
    #Tüdrukud – koosta vähemalt 8 tüdruku nimedega massiiv. Kasuta funktsiooni sort(), et sorteerida ja väljastada need kasvavas järjekorras ning kuvada ridade kaupa.
 
    echo "<h3>Tudrukud</h3>";
@@ -87,14 +85,103 @@
    $audid = array_count_values($margid)["Audi"];
 
    echo "<br>toyotasid on ". $toyotad;
-   echo "<br>audisid on ". $audid;
+   echo "<br>audisid on ". $audid . "<br>";
 
    # leia ja väljasta VIN koodid,  mille märkide arv on väiksem kui 17
-   
+   echo "<h3>Vinnid mis on väiksemad kui 17 märki</h3>";
+   foreach ($vinnid as $pikkus){
+    if (strlen($pikkus) <= 16){
+        echo "<br>" . $pikkus;
+    }
+   }
+   #Keskmised palgad
+    # leia 2018 palkade keskmine
+    echo "<h3>Keskmine palk</h3>";
+   $palgad = array(1220,1213,1295,1312,1298,1354,1296,1286,1292,1327,1369,1455);
+   $palk1 = array_sum($palgad);
+   $palk2 = count($palgad);
+   $palgaKeskmine = $palk1 / $palk2;
+   echo "<br>Keskmine palk on " . $palgaKeskmine . "€ aastal 2018.";
+   echo "<h3>Firmad</h3>";
+   ?>
+   <form action="h05.php" method="get">
+        <input type="string" name="firmad" placeholder="Eemalda firma" required><br>
+        <input type="submit" value="Eemalda" class="btn btn-success"><br>
+        </form> 
+<?php
+  #Firmad
+  $firmad = array("Kimia","Mynte","Voomm","Twiyo","Layo","Talane","Gigashots","Tagchat","Quaxo","Voonyx","Kwilith","Edgepulse","Eidel","Eadel","Jaloo","Oyope","Jamia");
+  sort($firmad);
+  if (isset($_GET["firmad"])) {
+    $eemaldamine = $_GET["firmad"];
+    $firmad2 = array_search($eemaldamine, $firmad);
+    if ($firmad2 !== false) {
+      unset($firmad[$firmad2]);
+    }
+  }
+  foreach ($firmad as $firma) {
+    echo $firma . "<br>";
+  }
+#Riigid
+#* kuva kõige pikema riigi nime märkide arv
+echo "<h3>Pikem Riik</h3>";
+$riigid = array("Indonesia","Canada","Kyrgyzstan","Germany","Philippines",
+"Philippines","Canada","Philippines","South Sudan","Brazil",
+"Democratic Republic of the Congo","Indonesia","Syria","Sweden",
+"Philippines","Russia","China","Japan","Brazil","Sweden","Mexico","France",
+"Kazakhstan","Cuba","Portugal","Czech Republic");
 
-   
-   
-   ?> 
-   </div>
+$koigePikem = max(array_map('strlen', $riigid));
+echo "Koige pikema riigi nimes on " . $koigePikem . " tähemärki";
+
+#Hiina nimed
+echo "<h3>Hiina nimed</h3>";
+$nimed = array("瀚聪","月松","雨萌","展博","雪丽","哲恒","慧妍","博裕","宸瑜","奕漳",
+"思宏","伟菘","彦歆","睿杰","尹智","琪煜","惠茜","晓晴","志宸","博豪",
+"璟雯","崇杉","俊誉","军卿","辰华","娅楠","志宸","欣妍","明美");
+sort($nimed);
+echo "Esimene nimi on " . $nimed[0] . "<br>";
+echo "Viimane nimi on " . end($nimed);
+
+echo "<h3>Google</h3>";
+?>
+<form action="h05.php" method="get">
+        <input type="string" name="nimed" placeholder="Otsi Nime" required><br>
+        <input type="submit" value="Otsi" class="btn btn-success"><br>
+        </form> 
+<?php
+#kasuta oringumootorit, et leida massiivi funktsioon, mis aitab leida, kas kasutaja otsitav nimi on olemas
+#* väljasta täislause ja kuva Bootstrap Alert kastis
+
+if (isset($_GET['nimed'])){
+$nimi = $_GET['nimed'];
+$nimed = array("Feake","Bradwell","Dreger","Bloggett","Lambole","Daish","Lippiett","
+Blackie","Stollenbeck","Houseago","Dugall","Sprowson","Kitley","Mcenamin",
+"Allchin","Doghartie","Brierly","Pirrone","Fairnie","Seal","Scoffins",
+"Galer","Matevosian","DeBlase","Cubbin","Izzett","Ebi","Clohisey",
+"Prater","Probart","Samwaye","Concannon","MacLure","Eliet","Kundt","Reyes");
+if (in_array($nimi, $nimed)){
+  echo "nimi " . $nimi . " on olemas<br>";
+} else {
+  echo "ei ole olemas<br>";
+}
+}
+#Pildid
+#tekita /img  kataloog ja sinna profiilipildid samade nimedega
+#* kuva massiivist kolmas pilt
+#* kuva massiivist kõik pildid
+#* kuva pildid Bootstrapi abil 6 veerus
+echo "<h3>pildid</h3>";
+$pildid = array("devlin.jpg","freeland.jpg","gabriel.jpg","pete.jpg","peterus.jpg","prentice.jpg");
+echo $pildid[2] . "<br>";
+
+
+foreach ($pildid as $pilt) {
+  echo '<img width=100 src="img/'.$pilt.'" alt="'.$pilt.'">';
+}
+
+?>
+
+</div>
 </body>
 </html>
