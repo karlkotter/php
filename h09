@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>H09</title>
+    <style>
+.container {
+  width: 1200px;
+  padding-top: 60px;
+  
+}
+h1{
+    text-align: center;
+    font-family: "Comic Sans MS", "Comic Sans";
+    text-shadow: 2px 2px #ff0bb0;
+    border-style: solid;
+}
+.php{
+    padding-left: 60px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Harjutus 09</h1>
+<?php
+echo "<h3>Tervitamine</h3>"
+#Kasutaja lisab vormi nime, seda näiteks suured ja väikesed tähed läbisegi. Sina kood tervitab teda kenasti nimepidi, kus nimi algab suure algustähega.
+#Näiteks: sisend–>mARiO; väljund–>Tere, Mario!
+
+#Kuna on teada, et PHP käsitleb teksti kui massiivi, siis peaks saama seda tsükli abil nö. tükeldada. Ülesandeks on etteantud teksti iga tähe järgi lisada punkt.
+#Näiteks: sisend–>stalker; väljund–>S.T.A.L.K.E.R.
+
+#Koosta tekstiväli, mis kuvab kasutaja sisestatud sõnumeid. Kasutaja ropud sõnad asendatakse tärnidega.
+
+#Kasutajalt saadud eesnime ja perenime põhjal luuakse talle email lõpuga @hkhk.edu.ee. Kusjuures täpitähed asendatakse ä->a, ö->o, ü->y, õ->o ja kogu email on väikeste tähtedega
+#Näiteks: sisend–>Ülle ja Doos; väljund–>ylle.doos@hkhk.edu.ee
+#Näiteks: sisend–>Sa oled täielik noob; väljund–>Sa oled täielik vitt
+?>
+</div>
+</body>
+</html>
