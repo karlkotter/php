@@ -48,16 +48,43 @@ echo 'Kooliaasta lõpuni on jäänud '.$lopuni.' päeva.';
 
 #Väljasta vastavalt aastaajale pilt (kevad, suvi, sügis, talv)
 echo "<h3>Pildi väjastamine</h3>";
-?>
-<form action="h08.php" method="get">
-        <input type="number" name="kuu" placeholder="sisestage kuupäev 1-12" required><br>
-        <input type="submit" value="Arvuta" class="btn btn-outline-dark"><br>
-        </form>
-<?php
-if (isset($_GET["kuu"])) {
-$kuu = $_GET["kuu"];
-if ($kuu )
-}
+
+
+// Determine the current season
+$seasons = array(
+    'talv' => 'talv.jpg','kevad' => 'kevad.jpg','suvi' => 'suvi.jpg','sügis' => 'sugis.jpg');
+    
+    $praegune_aastaeg = '';
+    
+    // Määra praegune aastaeg
+    $kuu = date('n');
+    switch ($kuu) {
+    case 12:
+    case 1:
+    case 2:
+    $praegune_aastaeg = 'talv';
+    break;
+    case 3:
+    case 4:
+    case 5:
+    $praegune_aastaeg = 'kevad';
+    break;
+    case 6:
+    case 7:
+    case 8:
+    $praegune_aastaeg = 'suvi';
+    break;
+    case 9:
+    case 10:
+    case 11:
+    $praegune_aastaeg = 'sügis';
+    break;
+    }
+    
+    // Kuvab vastava pildi
+    echo '<img src="' . $seasons[$praegune_aastaeg] . '">';
+    echo $seasons[$praegune_aastaeg];
+    echo "</br>Sei tööta :(";
 ?>
 </div>
 </body>
