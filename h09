@@ -25,14 +25,39 @@ h1{
 </head>
 <body>
     <div class="container">
-        <h1>Harjutus 09</h1>
+        
+        <h1>Harjutus (6)9</h1>
+        <h3>Tervitamine</h3>
+        <form action="h09.php" method="get">
+        <input type="text" name="nimi" placeholder="Sisestage nimi" required><br>
+        <input type="submit" value="sisesta" class="btn btn-outline-dark"><br>
+        </form>
 <?php
-echo "<h3>Tervitamine</h3>"
 #Kasutaja lisab vormi nime, seda näiteks suured ja väikesed tähed läbisegi. Sina kood tervitab teda kenasti nimepidi, kus nimi algab suure algustähega.
 #Näiteks: sisend–>mARiO; väljund–>Tere, Mario!
-
+isset($_GET["nimi"]);
+$nimi = $_GET['nimi'];
+$vaiksedTahed = strtolower($nimi);
+$suurEsiTaht = ucfirst($vaiksedTahed);
+echo "<h5>Tere, $suurEsiTaht.</h5>";
+?>
+<hr color="black" size="5">
+<h3>Tükeldamine</h3>
+        <form action="h09.php" method="get">
+        <input type="text" name="tukeldamine" placeholder="Sisestage tekst" required><br>
+        <input type="submit" value="sisesta" class="btn btn-outline-dark"><br>
+        </form>
+<?php
 #Kuna on teada, et PHP käsitleb teksti kui massiivi, siis peaks saama seda tsükli abil nö. tükeldada. Ülesandeks on etteantud teksti iga tähe järgi lisada punkt.
 #Näiteks: sisend–>stalker; väljund–>S.T.A.L.K.E.R.
+isset($_GET["tukeldamine"]);
+$lause = $_GET["tukeldamine"];
+$tahed = str_split($lause);
+$tekst = implode(".", $tahed);
+echo $tekst;
+
+
+
 
 #Koosta tekstiväli, mis kuvab kasutaja sisestatud sõnumeid. Kasutaja ropud sõnad asendatakse tärnidega.
 
@@ -40,6 +65,8 @@ echo "<h3>Tervitamine</h3>"
 #Näiteks: sisend–>Ülle ja Doos; väljund–>ylle.doos@hkhk.edu.ee
 #Näiteks: sisend–>Sa oled täielik noob; väljund–>Sa oled täielik vitt
 ?>
+
+
 </div>
 </body>
 </html>
